@@ -86,7 +86,7 @@ def writeBOMToFile(bom, bom_exclusions):
 
         fileDlg = ui.createFileDialog()
         fileDlg.isMultiSelectEnabled = False
-        fileDlg.title = 'BOM File Dialog'
+        fileDlg.title = 'BOM File'
         fileDlg.filter = '*.csv'
 
         dlgResult = fileDlg.showSave()
@@ -132,7 +132,7 @@ def run(context):
         
         product = app.activeProduct
         design = adsk.fusion.Design.cast(product)
-        title = 'BOM Extractor'
+        title = 'BOMExtractor'
         if not design:
             ui.messageBox('No active design', title)
             return
