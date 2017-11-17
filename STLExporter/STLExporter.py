@@ -2,6 +2,7 @@
 #Description-Exports component bodies as STL.
 
 import adsk.core, adsk.fusion, adsk.cam, traceback
+
 import os.path
 
 
@@ -56,7 +57,9 @@ def export_stls(design):
             for body, filename in bodies_to_export:
                 filepath = os.path.join(save_folder, filename) 
                 stlExportOptions = exportManager.createSTLExportOptions(body, filepath)
+                stlExportOptions.isBinaryFormat = False
                 stlExportOptions.sendToPrintUtility = False
+                stlExportOptions.meshRefinement = adsk.fusion.MeshRefinementSettings.MeshRefinementHigh
                 
                 exportManager.execute(stlExportOptions)
                 
