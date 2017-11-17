@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"PopsDylan",
+	"description":	{
+		"":	"Exports component bodies as STL."
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}
