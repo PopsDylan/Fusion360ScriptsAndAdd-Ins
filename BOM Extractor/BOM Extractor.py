@@ -8,9 +8,12 @@ def extract_info(occ, comp):
     material = comp.material.name if comp.material else ('Various' if len(occ.childOccurrences) > 0 else 'Unknown')
     comp_appearance = comp.material.appearance.name if comp.material and comp.material.appearance else 'None'    
     
+    section, description = comp.description.split(':', 1) if ':' in comp.description else ('Unknown', comp.description)
+    
     info = {
         'Part Number': comp.partNumber,
-        'Description': comp.description,
+        'Section':     section,
+        'Description': description,
         'Material':    material,
         'Appearance':  occ.appearance.name if occ.appearance else comp_appearance
         }
@@ -88,7 +91,7 @@ def writeBOMToFile(bom, bom_exclusions):
             save_filename = fileDlg.filename   
 
             with open(save_filename,'w', newline='\r\n') as f:
-                headings = ['Name', 'Quantity', 'Part Number', 'Description', 'Material','Appearance']
+                headings = ['Name', 'Quantity', 'Part Number', 'Section', 'Description', 'Material','Appearance']
                 item_fields = headings[:2]
                 item_info_fields = headings[2:]
                 
